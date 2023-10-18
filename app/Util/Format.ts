@@ -12,7 +12,7 @@ export const formatarNumero = (value: string | null | undefined): string | null 
     return value.replace(/\D/g, '')
 }
 
-export const formatarDecimal = (value: string | number | null): number | null => {
+export const formatarDecimal = (value: string | number | null | undefined): number | null => {
     const input = String(value);
 
     if (!/^\d+(\.\d+)?$/.test(input)) {
