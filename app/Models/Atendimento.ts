@@ -1,5 +1,5 @@
 import { BaseModel, beforeSave, column } from '@ioc:Adonis/Lucid/Orm'
-import { formatarData, formatarString } from 'App/Util/Format'
+import { formatarData, formatarString } from 'App/Utils/Format'
 import { DateTime } from 'luxon'
 
 export default class Atendimento extends BaseModel {

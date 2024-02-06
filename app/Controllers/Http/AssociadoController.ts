@@ -1,7 +1,7 @@
 import type { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 import CustomErrorException from 'App/Exceptions/CustomErrorException'
 import Associado from 'App/Models/Associado'
-import CreateAssociadoValidator from 'App/Validators/CreateAssociadoValidator'
+import AssociadoValidator from 'App/Validators/AssociadoValidator'
 
 export default class AssociadoController {
 
@@ -26,7 +26,7 @@ export default class AssociadoController {
                 dataPrimeiraParcela, diaPagamento, ultimoPagamento, ultimoMesPago, cobradorId, regiaoId, rotaId, cobradorTemporarioId,
                 regiaoTemporariaId, rotaTemporariaId, vendedorId, concorrenteId, dataCancelamento, dataQuitacao, dataContratoAnterior,
                 ultimoMesPagoAnterior, empresaAnterior, observacao, localCobranca, horarioCobranca, termoReajuste, boletoEntregue, tipoEntregaBoleto
-            } = await request.validate(CreateAssociadoValidator)
+            } = await request.validate(AssociadoValidator)
 
             // Insere o registro no banco de dados.
             const banco = await Associado.create({
@@ -79,7 +79,7 @@ export default class AssociadoController {
                 dataPrimeiraParcela, diaPagamento, ultimoPagamento, ultimoMesPago, cobradorId, regiaoId, rotaId, cobradorTemporarioId,
                 regiaoTemporariaId, rotaTemporariaId, vendedorId, concorrenteId, dataCancelamento, dataQuitacao, dataContratoAnterior,
                 ultimoMesPagoAnterior, empresaAnterior, observacao, localCobranca, horarioCobranca, termoReajuste, boletoEntregue, tipoEntregaBoleto
-            } = await request.validate(CreateAssociadoValidator)
+            } = await request.validate(AssociadoValidator)
 
             // Atualiza o objeto com os dados novos.
             banco = {

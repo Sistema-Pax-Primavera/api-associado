@@ -1,5 +1,5 @@
 import { BaseModel, beforeSave, column } from '@ioc:Adonis/Lucid/Orm'
-import { formatarData, formatarDecimal, formatarString } from 'App/Util/Format'
+import { formatarData, formatarDecimal, formatarString } from 'App/Utils/Format'
 import { DateTime } from 'luxon'
 
 export default class Parcela extends BaseModel {

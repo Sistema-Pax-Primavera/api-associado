@@ -1,6 +1,6 @@
 import Hash from '@ioc:Adonis/Core/Hash'
 import { BaseModel, beforeSave, column } from '@ioc:Adonis/Lucid/Orm'
-import { formatarNumero, formatarString } from 'App/Util/Format'
+import { formatarNumero, formatarString } from 'App/Utils/Format'
 import { DateTime } from 'luxon'
 
 export default class Usuario extends BaseModel {

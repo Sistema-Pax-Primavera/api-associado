@@ -9,7 +9,7 @@
 */
 
 import { validator } from '@ioc:Adonis/Core/Validator'
-import { formatarNumero, validaCnpj, validaCpf } from 'App/Util/Format'
+import { formatarNumero, validaCnpj, validaCpf } from 'App/Utils/Format'
 
 validator.rule('cpfCnpj', (value, _, options) => {
     const cpf = validaCpf(value)

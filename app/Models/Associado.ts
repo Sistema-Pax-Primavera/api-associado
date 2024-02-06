@@ -1,6 +1,5 @@
-import { DateTime } from 'luxon'
 import { BaseModel, beforeSave, column } from '@ioc:Adonis/Lucid/Orm'
-import { formatarData, formatarNumero, formatarString } from 'App/Util/Format'
+import { DateTime } from 'luxon'
 
 export default class Associado extends BaseModel {
   public static table = 'associado.associado'
@@ -18,23 +17,23 @@ export default class Associado extends BaseModel {
 
   // Nome do associado.
   @column()
-  public nome: string | null
+  public nome: string
 
   // RG do associado.
   @column()
-  public rg: string | null | undefined
+  public rg: string
 
   // CPF ou CNPJ do associado.
   @column()
   public cpfCnpj: string | null | undefined
 
   // Data de nascimento do associado.
-  @column()
-  public dataNascimento: string | DateTime | Date | null | undefined
+  @column.date()
+  public dataNascimento: DateTime
 
   // Data de falecimento do associado.
-  @column()
-  public dataFalecimento: string | DateTime | Date | null | undefined
+  @column.date()
+  public dataFalecimento: DateTime | null | undefined
 
   // Estado civil do associado.
   @column()
@@ -69,20 +68,20 @@ export default class Associado extends BaseModel {
   public adicionalId: number | null | undefined
 
   // Data de filiação da cremação.
-  @column()
-  public filiacaoCremacao: string | DateTime | Date | null | undefined
+  @column.date()
+  public filiacaoCremacao: DateTime | null | undefined
 
   // Data inicío da carência da cremação.
-  @column()
-  public dataInicioCarenciaCremacao: string | DateTime | Date | null | undefined
+  @column.date()
+  public dataInicioCarenciaCremacao: DateTime | null | undefined
 
   // Data fim da carência da cremação.
-  @column()
-  public dataFimCarenciaCremacao: string | DateTime | Date | null | undefined
+  @column.date()
+  public dataFimCarenciaCremacao: DateTime | null | undefined
 
   // Data cadastro da cremação.
   @column.dateTime()
-  public cadastroCremacao: DateTime | null | undefined
+  public cadastroCremacao: DateTime
 
   // Nome do usuário que cadastrou a cremação.
   @column()
@@ -94,7 +93,7 @@ export default class Associado extends BaseModel {
 
   // Número de contrato do plano.
   @column()
-  public contrato: number | null | undefined
+  public contrato: number
 
   // Número de contrato do plano do cemitério.
   @column()
@@ -114,19 +113,19 @@ export default class Associado extends BaseModel {
 
   // CEP do endereço residencial do associado.
   @column()
-  public cep: string | null
+  public cep: string
 
   // Estado (UF) do endereço residencial do associado.
   @column()
-  public estado: string | null
+  public estado: string
 
   // Rua do endereço residencial do associado.
   @column()
-  public rua: string | null
+  public rua: string
 
   // Logradouro do endereço residencial do associado.
   @column()
-  public logradouro: string | null
+  public logradouro: string
 
   // Quadra do endereço residencial do associado.
   @column()
@@ -154,19 +153,19 @@ export default class Associado extends BaseModel {
 
   // CEP do endereço de cobrança do associado.
   @column()
-  public cepCobranca: string | null
+  public cepCobranca: string
 
   // Estado (UF) do endereço de cobrança do associado.
   @column()
-  public estadoCobranca: string | null
+  public estadoCobranca: string
 
   // Rua do endereço de cobrança do associado.
   @column()
-  public ruaCobranca: string | null
+  public ruaCobranca: string
 
   // Logradouro do endereço de cobrança do associado.
   @column()
-  public logradouroCobranca: string | null
+  public logradouroCobranca: string
 
   // Quadra do endereço de cobrança do associado.
   @column()
@@ -185,36 +184,36 @@ export default class Associado extends BaseModel {
   public complementoCobranca: string | null | undefined
 
   // ID do plano vinculado ao associado.
-  @column() 
+  @column()
   public planoId: number | null | undefined
 
   // Data de cadastro do contrato.
-  @column()
-  public dataContrato: string | DateTime | Date | null | undefined
+  @column.date()
+  public dataContrato: DateTime | null | undefined
 
   // Data inicío da carência do contrato.
-  @column()
-  public dataInicioCarencia: string | DateTime | Date | null | undefined
+  @column.date()
+  public dataInicioCarencia: DateTime | null | undefined
 
   // Data fim da carência do contrato.
-  @column()
-  public dataFimCarencia: string | DateTime | Date | null | undefined
+  @column.date()
+  public dataFimCarencia: DateTime | null | undefined
 
   // Data da primeia parcela a ser paga.
-  @column()
-  public dataPrimeiraParcela: string | DateTime | Date | null | undefined
+  @column.date()
+  public dataPrimeiraParcela: DateTime | null | undefined
 
   // Dia de vencimento das parcelas.
   @column()
   public diaPagamento: number | null | undefined
 
   // Data do último pagamento realizado.
-  @column()
-  public ultimoPagamento: string | DateTime | Date | null | undefined
+  @column.date()
+  public ultimoPagamento: DateTime | null | undefined
 
   // Data do último mês pago.
-  @column()
-  public ultimoMesPago: string | DateTime | Date | null | undefined
+  @column.date()
+  public ultimoMesPago: DateTime | null | undefined
 
   // ID do cobrador associado ao plano.
   @column()
@@ -238,7 +237,7 @@ export default class Associado extends BaseModel {
 
   // ID da rota associada ao plano.
   @column()
-  public rotaTemporariaId: number | null | undefined
+  public rotaTemporariaId: number | null | undefined 
 
   // ID do vendedor associado ao plano.
   @column()
@@ -250,19 +249,19 @@ export default class Associado extends BaseModel {
 
   // Data de cancelamento do plano.
   @column()
-  public dataCancelamento: string | DateTime | Date | null | undefined
+  public dataCancelamento: Date | null | undefined
 
   // Data de quitação do plano.
-  @column()
-  public dataQuitacao: string | DateTime | Date | null | undefined
+  @column.date()
+  public dataQuitacao: DateTime | null | undefined
 
   // Data de cadastro do plano anterior.
-  @column()
-  public dataContratoAnterior: string | DateTime | Date | null | undefined
+  @column.date()
+  public dataContratoAnterior: DateTime | null | undefined
 
   // Último mês pago do plano anterior.
-  @column()
-  public ultimoMesPagoAnterior: string | DateTime | Date | null | undefined
+  @column.date()
+  public ultimoMesPagoAnterior: DateTime | null | undefined
 
   // Empresa assistencial do plano anterior.
   @column()
@@ -277,8 +276,8 @@ export default class Associado extends BaseModel {
   public localCobranca: number
 
   // Horário de cobrança ideal.
-  @column()
-  public horarioCobranca: string | DateTime | Date | null | undefined
+  @column.dateTime()
+  public horarioCobranca: DateTime | null | undefined
 
   // Indica se o termo de reajuste foi entregue.
   @column()
@@ -290,7 +289,7 @@ export default class Associado extends BaseModel {
 
   // Indica se o termo de reajuste foi entregue.
   @column()
-  public tipoEntregaBoleto: number | null
+  public tipoEntregaBoleto: boolean | null | undefined
 
   // Indica se o resgistro está ativo.
   @column()
@@ -302,66 +301,19 @@ export default class Associado extends BaseModel {
 
   // Nome do criador do registro.
   @column()
-  public createdBy: string | null
+  public createdBy: string
 
   // Data de atualização do registro.
   @column.dateTime({ autoCreate: true, autoUpdate: true })
-  public updatedAt: DateTime
+  public updatedAt: DateTime | null | undefined
 
   // Nome do responsável pela atualização do registro.
   @column()
   public updatedBy: string | null | undefined
 
-  /**
-  * Método de gancho (hook) que formata os campos do dependente antes de salvá-los.
-  *
-  * @param {Associado} associado - O objeto Associado a ser formatado.
-  *
-  * @memberOf Associado
-  */
   @beforeSave()
-  public static async formatFields(associado: Associado) {
-    associado.nome = formatarString(associado.nome)
-    associado.rg = formatarNumero(associado.rg)
-    associado.cpfCnpj = formatarNumero(associado.cpfCnpj)
-    associado.dataNascimento = formatarData(associado.dataNascimento)
-    associado.dataFalecimento = formatarData(associado.dataFalecimento)
-    associado.naturalidade = formatarString(associado.naturalidade)
-    associado.profissao = formatarString(associado.profissao)
-    associado.filiacaoCremacao = formatarData(associado.filiacaoCremacao)
-    associado.dataInicioCarenciaCremacao = formatarData(associado.dataInicioCarenciaCremacao)
-    associado.dataFimCarenciaCremacao = formatarData(associado.dataFimCarenciaCremacao)
-    associado.usuarioCremacao = formatarString(associado.usuarioCremacao)
-    associado.cep = formatarNumero(associado.cep)
-    associado.estado = formatarString(associado.estado)
-    associado.rua = formatarString(associado.rua)
-    associado.logradouro = formatarString(associado.logradouro)
-    associado.quadra = formatarString(associado.quadra)
-    associado.lote = formatarString(associado.lote)
-    associado.numero = formatarString(associado.numero)
-    associado.complemento = formatarString(associado.complemento)
-    associado.cepCobranca = formatarNumero(associado.cepCobranca)
-    associado.estadoCobranca = formatarString(associado.estadoCobranca)
-    associado.ruaCobranca = formatarString(associado.ruaCobranca)
-    associado.logradouroCobranca = formatarString(associado.logradouroCobranca)
-    associado.quadraCobranca = formatarString(associado.quadraCobranca)
-    associado.loteCobranca = formatarString(associado.loteCobranca)
-    associado.numeroCobranca = formatarString(associado.numeroCobranca)
-    associado.complementoCobranca = formatarString(associado.complementoCobranca)
-    associado.dataContrato = formatarData(associado.dataContrato)
-    associado.dataInicioCarencia = formatarData(associado.dataInicioCarencia)
-    associado.dataFimCarencia = formatarData(associado.dataFimCarencia)
-    associado.dataPrimeiraParcela = formatarData(associado.dataPrimeiraParcela)
-    associado.ultimoPagamento = formatarData(associado.ultimoPagamento)
-    associado.ultimoMesPago = formatarData(associado.ultimoMesPago)
-    associado.dataCancelamento = formatarData(associado.dataCancelamento)
-    associado.dataQuitacao = formatarData(associado.dataQuitacao)
-    associado.dataContratoAnterior = formatarData(associado.dataContratoAnterior)
-    associado.ultimoMesPagoAnterior = formatarData(associado.ultimoMesPagoAnterior)
-    associado.empresaAnterior = formatarString(associado.empresaAnterior)
-    associado.observacao = formatarString(associado.observacao)
-    associado.horarioCobranca = formatarData(associado.horarioCobranca)
-    associado.createdBy = formatarString(associado.createdBy)
-    associado.updatedBy = formatarString(associado.updatedBy)
+  public static async format(data: Associado){
+    data.createdBy = data.createdBy?.toUpperCase()
+    data.updatedBy = data.updatedBy?.toUpperCase()
   }
 }

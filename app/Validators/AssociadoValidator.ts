@@ -35,8 +35,8 @@ export default class CreateAssociadoValidator {
     cpfCnpj: schema.string.nullableAndOptional([
       rules.cpfCnpj()
     ]),
-    dataNascimento: schema.date({ format: 'DD/MM/YYYY' }),
-    dataFalecimento: schema.date.nullableAndOptional({ format: 'DD/MM/YYYY' }),
+    dataNascimento: schema.date({ format: 'yyyy-MM-dd' }),
+    dataFalecimento: schema.date.nullableAndOptional({ format: 'yyyy-MM-dd' }),
     estadoCivilId: schema.number(),
     religiaoId: schema.number(),
     naturalidade: schema.string.nullableAndOptional([
