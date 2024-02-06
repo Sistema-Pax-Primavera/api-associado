@@ -1,6 +1,6 @@
 import { HttpContextContract } from '@ioc:Adonis/Core/HttpContext';
 
-export default async function handleRequest(
+export default async function handleResponse(
   callback: () => Promise<any>,
   response: HttpContextContract['response']
 ) {

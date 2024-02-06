@@ -2,17 +2,13 @@ import CustomError from "App/Exceptions/CustomError"
 import Associado from "App/Models/Associado"
 import CrudDatabase from "App/Utils/CrudDatabase"
 import validateFields from "App/Utils/Functions"
-import { FieldOptions, portes } from "App/Utils/Globals"
+import { FieldOptions } from "App/Utils/Globals"
 
 interface AssociadoInterface {
     [key: string]: FieldOptions
 }
 
 const fields: AssociadoInterface = {
-    descricao: { type: 'string', required: true, unique: true },
-    pet: { type: 'boolean', required: true, default: false },
-    porte: { type: 'string', required: false, enumValues: portes },
-    resgate: { type: 'boolean', required: false, default: true },
     ativo: { type: 'boolean', required: false, default: true },
     createdBy: { type: 'string', required: true },
     createdAt: { type: 'datetime', required: false, format: 'yyyy-MM-dd HH:mm:ss' },

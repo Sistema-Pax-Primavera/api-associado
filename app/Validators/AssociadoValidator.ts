@@ -1,5 +1,6 @@
 import { schema, rules, CustomMessages } from '@ioc:Adonis/Core/Validator'
 import type { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
+import { sexo } from 'App/Utils/Globals'
 
 export default class CreateAssociadoValidator {
   constructor(protected ctx: HttpContextContract) { }
@@ -33,7 +34,7 @@ export default class CreateAssociadoValidator {
       rules.maxLength(30)
     ]),
     cpfCnpj: schema.string.nullableAndOptional([
-      rules.cpfCnpj()
+      rules.cpfCnpj(),
     ]),
     dataNascimento: schema.date({ format: 'yyyy-MM-dd' }),
     dataFalecimento: schema.date.nullableAndOptional({ format: 'yyyy-MM-dd' }),
@@ -46,18 +47,13 @@ export default class CreateAssociadoValidator {
     profissao: schema.string.nullableAndOptional([
       rules.maxLength(100)
     ]),
-    sexo: schema.enum.nullableAndOptional([
-      1, 2, 3, 4
-    ]),
+    sexo: schema.enum.nullableAndOptional(sexo.flatMap((item) => item.id)),
     cremacao: schema.boolean(),
     adicionalId: schema.number.nullableAndOptional(),
-    filiacaoCremacao: schema.date.nullableAndOptional({ format: 'DD/MM/YYYY' }),
-    dataInicioCarenciaCremacao: schema.date.nullableAndOptional({ format: 'DD/MM/YYYY' }),
-    dataFimCarenciaCremacao: schema.date.nullableAndOptional({ format: 'DD/MM/YYYY' }),
-    cadastroCremacao: schema.date.nullableAndOptional({ format: 'DD/MM/YYYY HH:mm:ss' }),
-    usuarioCremacao: schema.string.nullableAndOptional([
-      rules.maxLength(100)
-    ]),
+    filiacaoCremacao: schema.date.nullableAndOptional({ format: 'yyyy-MM-dd' }),
+    dataInicioCarenciaCremacao: schema.date.nullableAndOptional({ format: 'yyyy-MM-dd' }),
+    dataFimCarenciaCremacao: schema.date.nullableAndOptional({ format: 'yyyy-MM-dd' }),
+    cadastroCremacao: schema.date.nullableAndOptional({ format: 'yyyy-MM-dd HH:mm:ss' }),
     situacaoCremacaoId: schema.number.nullableAndOptional(),
     contrato: schema.number(),
     contratoCemiterio: schema.number.nullableAndOptional(),
@@ -88,18 +84,18 @@ export default class CreateAssociadoValidator {
     complemento: schema.string.nullableAndOptional([
       rules.maxLength(100)
     ]),
-    municipioCobrancaId: schema.number(),
-    bairroCobrancaId: schema.number(),
-    cepCobranca: schema.string([
+    municipioCobrancaId: schema.number.nullableAndOptional(),
+    bairroCobrancaId: schema.number.nullableAndOptional(),
+    cepCobranca: schema.string.nullableAndOptional([
       rules.cep()
     ]),
-    estadoCobranca: schema.string([
+    estadoCobranca: schema.string.nullableAndOptional([
       rules.regex(/^[A-Z]{2}/)
     ]),
-    ruaCobranca: schema.string([
+    ruaCobranca: schema.string.nullableAndOptional([
       rules.maxLength(100)
     ]),
-    logradouroCobranca: schema.string([
+    logradouroCobranca: schema.string.nullableAndOptional([
       rules.maxLength(30)
     ]),
     quadraCobranca: schema.string.nullableAndOptional([
@@ -114,14 +110,14 @@ export default class CreateAssociadoValidator {
     complementoCobranca: schema.string.nullableAndOptional([
       rules.maxLength(100)
     ]),
-    planoId: schema.number.nullableAndOptional(),
-    dataContrato: schema.date.nullableAndOptional({ format: 'DD/MM/YYYY' }),
-    dataInicioCarencia: schema.date.nullableAndOptional({ format: 'DD/MM/YYYY' }),
-    dataFimCarencia: schema.date.nullableAndOptional({ format: 'DD/MM/YYYY' }),
-    dataPrimeiraParcela: schema.date.nullableAndOptional({ format: 'DD/MM/YYYY' }),
+    planoId: schema.number(),
+    dataContrato: schema.date({ format: 'yyyy-MM-dd' }),
+    dataInicioCarencia: schema.date.nullableAndOptional({ format: 'yyyy-MM-dd' }),
+    dataFimCarencia: schema.date.nullableAndOptional({ format: 'yyyy-MM-dd' }),
+    dataPrimeiraParcela: schema.date.nullableAndOptional({ format: 'yyyy-MM-dd' }),
     diaPagamento: schema.number.nullableAndOptional(),
-    ultimoPagamento: schema.date.nullableAndOptional({ format: 'DD/MM/YYYY' }),
-    ultimoMesPago: schema.date.nullableAndOptional({ format: 'DD/MM/YYYY' }),
+    ultimoPagamento: schema.date.nullableAndOptional({ format: 'yyyy-MM-dd' }),
+    ultimoMesPago: schema.date.nullableAndOptional({ format: 'yyyy-MM-dd' }),
     cobradorId: schema.number.nullableAndOptional(),
     regiaoId: schema.number.nullableAndOptional(),
     rotaId: schema.number.nullableAndOptional(),
