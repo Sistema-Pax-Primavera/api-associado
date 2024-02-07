@@ -63,9 +63,11 @@ export default class AssociadoController {
      * @return {*} 
      * @memberof AssociadoController
      */
-    public async buscarTodos({ response }: HttpContextContract): Promise<any> {
+    public async buscarTodos({ request, response }: HttpContextContract): Promise<any> {
+        const params = request.qs()
+        
         await handleResponse(async () => {
-            return await this.service.buscarTodos();
+            return await this.service.buscarTodos(params);
         }, response);
     }
 
@@ -76,9 +78,11 @@ export default class AssociadoController {
      * @return {*} 
      * @memberof AssociadoController
      */
-    public async buscarAtivos({ response }: HttpContextContract): Promise<any> {
+    public async buscarAtivos({ request, response }: HttpContextContract): Promise<any> {
+        const params = request.qs()
+        
         await handleResponse(async () => {
-            return await this.service.buscarAtivos();
+            return await this.service.buscarAtivos(params);
         }, response);
     }
 

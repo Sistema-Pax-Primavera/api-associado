@@ -19,12 +19,20 @@ const fields: AssociadoInterface = {
 export default class AssociadoService {
     serviceDatabase = new CrudDatabase(Associado)
 
-    public async buscarTodos() {
-        return await this.serviceDatabase.findAll()
+    public async buscarTodos(params: object) {
+        if(!Object.keys(params).every(param => Associado.$getColumn(param))){
+            throw new CustomError("Parâmetros inválidos", 404)
+        }
+        
+        return await this.serviceDatabase.findByFilter(params)
     }
 
-    public async buscarAtivos() {
-        return await this.serviceDatabase.findByFilter({ ativo: true })
+    public async buscarAtivos(params: object) {
+        if(!Object.keys(params).every(param => Associado.$getColumn(param))){
+            throw new CustomError("Parâmetros inválidos", 404)
+        }
+
+        return await this.serviceDatabase.findByFilter({ ...params, ativo: true })
     }
 
     public async buscarPorId(id: number) {
