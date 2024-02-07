@@ -81,7 +81,7 @@ export default class Associado extends BaseModel {
 
   // Data cadastro da cremação.
   @column.dateTime()
-  public cadastroCremacao: DateTime
+  public cadastroCremacao: DateTime | null | undefined
 
   // Nome do usuário que cadastrou a cremação.
   @column()
@@ -185,11 +185,11 @@ export default class Associado extends BaseModel {
 
   // ID do plano vinculado ao associado.
   @column()
-  public planoId: number | null | undefined
+  public planoId: number
 
   // Data de cadastro do contrato.
   @column.date()
-  public dataContrato: DateTime | null | undefined
+  public dataContrato: DateTime
 
   // Data inicío da carência do contrato.
   @column.date()
@@ -201,11 +201,11 @@ export default class Associado extends BaseModel {
 
   // Data da primeia parcela a ser paga.
   @column.date()
-  public dataPrimeiraParcela: DateTime | null | undefined
+  public dataPrimeiraParcela: DateTime
 
   // Dia de vencimento das parcelas.
   @column()
-  public diaPagamento: number | null | undefined
+  public diaPagamento: number
 
   // Data do último pagamento realizado.
   @column.date()
@@ -217,15 +217,15 @@ export default class Associado extends BaseModel {
 
   // ID do cobrador associado ao plano.
   @column()
-  public cobradorId: number | null | undefined
+  public cobradorId: number
 
   // ID da região associada ao plano.
   @column()
-  public regiaoId: number | null | undefined
+  public regiaoId: number
 
   // ID da rota associada ao plano.
   @column()
-  public rotaId: number | null | undefined
+  public rotaId: number
 
   // ID do cobrador associado ao plano.
   @column()
@@ -241,15 +241,15 @@ export default class Associado extends BaseModel {
 
   // ID do vendedor associado ao plano.
   @column()
-  public vendedorId: number | null | undefined
+  public vendedorId: number
 
   // ID da concorrente em caso de transferência.
   @column()
   public concorrenteId: number | null | undefined
 
   // Data de cancelamento do plano.
-  @column()
-  public dataCancelamento: Date | null | undefined
+  @column.date()
+  public dataCancelamento: DateTime | null | undefined
 
   // Data de quitação do plano.
   @column.date()

@@ -1,6 +1,6 @@
 import { schema, rules, CustomMessages } from '@ioc:Adonis/Core/Validator'
 import type { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
-import { sexo } from 'App/Utils/Globals'
+import { localCobranca, sexo, tipoEntregaBoleto } from 'App/Utils/Globals'
 
 export default class CreateAssociadoValidator {
   constructor(protected ctx: HttpContextContract) { }
@@ -26,7 +26,6 @@ export default class CreateAssociadoValidator {
    */
   public schema = schema.create({
     unidadeId: schema.number(),
-    situacaoId: schema.number(),
     nome: schema.string([
       rules.maxLength(150)
     ]),
@@ -54,8 +53,6 @@ export default class CreateAssociadoValidator {
     dataInicioCarenciaCremacao: schema.date.nullableAndOptional({ format: 'yyyy-MM-dd' }),
     dataFimCarenciaCremacao: schema.date.nullableAndOptional({ format: 'yyyy-MM-dd' }),
     cadastroCremacao: schema.date.nullableAndOptional({ format: 'yyyy-MM-dd HH:mm:ss' }),
-    situacaoCremacaoId: schema.number.nullableAndOptional(),
-    contrato: schema.number(),
     contratoCemiterio: schema.number.nullableAndOptional(),
     enderecoComercial: schema.boolean(),
     municipioId: schema.number(),
@@ -116,8 +113,6 @@ export default class CreateAssociadoValidator {
     dataFimCarencia: schema.date.nullableAndOptional({ format: 'yyyy-MM-dd' }),
     dataPrimeiraParcela: schema.date.nullableAndOptional({ format: 'yyyy-MM-dd' }),
     diaPagamento: schema.number.nullableAndOptional(),
-    ultimoPagamento: schema.date.nullableAndOptional({ format: 'yyyy-MM-dd' }),
-    ultimoMesPago: schema.date.nullableAndOptional({ format: 'yyyy-MM-dd' }),
     cobradorId: schema.number.nullableAndOptional(),
     regiaoId: schema.number.nullableAndOptional(),
     rotaId: schema.number.nullableAndOptional(),
@@ -126,23 +121,19 @@ export default class CreateAssociadoValidator {
     rotaTemporariaId: schema.number.nullableAndOptional(),
     vendedorId: schema.number.nullableAndOptional(),
     concorrenteId: schema.number.nullableAndOptional(),
-    dataCancelamento: schema.date.nullableAndOptional({ format: 'DD/MM/YYYY' }),
-    dataQuitacao: schema.date.nullableAndOptional({ format: 'DD/MM/YYYY' }),
-    dataContratoAnterior: schema.date.nullableAndOptional({ format: 'DD/MM/YYYY' }),
-    ultimoMesPagoAnterior: schema.date.nullableAndOptional({ format: 'DD/MM/YYYY' }),
+    dataCancelamento: schema.date.nullableAndOptional({ format: 'yyyy-MM-dd' }),
+    dataQuitacao: schema.date.nullableAndOptional({ format: 'yyyy-MM-dd' }),
+    dataContratoAnterior: schema.date.nullableAndOptional({ format: 'yyyy-MM-dd' }),
+    ultimoMesPagoAnterior: schema.date.nullableAndOptional({ format: 'yyyy-MM-dd' }),
     empresaAnterior: schema.string.nullableAndOptional([
       rules.maxLength(150)
     ]),
     observacao: schema.string.nullableAndOptional(),
-    localCobranca: schema.enum([
-      1, 2, 3, 4, 5
-    ]),
+    localCobranca: schema.enum(localCobranca.flatMap((item) => item.id)),
     horarioCobranca: schema.date.nullableAndOptional({ format: 'HH:mm:ss' }),
     termoReajuste: schema.boolean.nullableAndOptional(),
     boletoEntregue: schema.boolean.nullableAndOptional(),
-    tipoEntregaBoleto: schema.enum([
-      1, 2, 3, 4, 5, 6
-    ])
+    tipoEntregaBoleto: schema.enum(tipoEntregaBoleto.flatMap((item) => item.id))
   })
 
   /**

@@ -53,5 +53,4 @@ export default class AssociadoService {
     public async ativar(id: number) {
         return await this.serviceDatabase.activate(id)
     }
-
 }

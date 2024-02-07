@@ -40,6 +40,19 @@ export const localCobranca: { id: number, descricao: string }[] = [
 ]
 
 /**
+ * Representa os locais de cobrança aceitos.
+ *
+ */
+export const tipoEntregaBoleto: { id: number, descricao: string }[] = [
+    { id: 1, descricao: 'RESIDENCIA' },
+    { id: 2, descricao: 'EMAIL' },
+    { id: 3, descricao: 'CORREIOS' },
+    { id: 4, descricao: 'WHATSAPP' },
+    { id: 5, descricao: 'ESCRITORIO' },
+    { id: 6, descricao: 'OUTROS' }
+]
+
+/**
  * Representa os portes aceitos. Os valores possíveis são 'P' (Pequeno), 'M' (Médio),
  * 'G' (Grande) e 'GG' (Extra Grande).
  *

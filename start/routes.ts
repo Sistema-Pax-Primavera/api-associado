@@ -20,6 +20,18 @@
 
 import Route from '@ioc:Adonis/Core/Route'
 
-Route.get('/', async () => {
-  return { hello: 'world' }
-})
+Route.group(() => {
+
+  Route.group(() => {
+    Route.post('', 'AssociadoController.cadastrar')
+
+    Route.put(':id', 'AssociadoController.atualizar')
+
+    Route.patch('ativar/:id', 'AssociadoController.ativar')
+
+    Route.get('', 'AssociadoController.buscarTodos')
+    Route.get('ativos', 'AssociadoController.buscarAtivos')
+    Route.get(':id', 'AssociadoController.buscarPorId')
+  }).prefix('associado')
+
+}).prefix('api/v1')
